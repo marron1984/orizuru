@@ -124,17 +124,46 @@ TypeScript が不足を検知します（翻訳漏れを防止）。ヘッダー
 
 | 変数名                  | 用途                                                                 | 未設定時の挙動                               |
 | ----------------------- | -------------------------------------------------------------------- | -------------------------------------------- |
-| `NEXT_PUBLIC_DONATE_URL`| 寄付ページの遷移先 URL（公益財団／認定NPO 等）                        | 寄付ボタンは「準備中」モーダルを表示           |
+| `STRIPE_SECRET_KEY`     | Stripe シークレットキー（寄付決済）                                   | `/donate` は「準備中」表示にフォールバック    |
+| `STRIPE_WEBHOOK_SECRET` | Stripe Webhook 署名シークレット（受領記録・任意）                    | Webhook は 503 を返す（記録なしでも決済は可） |
+| `NEXT_PUBLIC_DONATE_URL`| 外部の寄付ページ URL（任意）                                          | 内蔵の `/donate`（Stripe）を使用             |
 | `SUBSCRIBE_ENDPOINT`    | メール登録の送信先（Resend / Formspree / Webhook 等）                | API はバリデーションのみ行い、ログ出力で成功 |
 | `NEXT_PUBLIC_SITE_URL`  | 公開サイトの正規 URL（OGP / `metadataBase`）                         | `https://orizuru.example.com` を使用          |
 
 ### 運用メモ
 
-- 寄付決済（Stripe 等）や実メール送信の接続は、寄付の受け皿（公益財団／認定NPO の口座・規約）が
-  固まってから行います。それまではプレースホルダで公開し、CTA は「お知らせ登録」を主、
-  「寄付」を準備中表示とする運用も可能です。
+- 寄付決済（Stripe）や実メール送信の接続は、寄付の受け皿（公益財団／認定NPO の口座・規約）が
+  固まってから行います。`STRIPE_SECRET_KEY` 未設定のあいだ `/donate` は準備中表示となるため、
+  キー未設定のまま安全に公開できます。CTA は「お知らせ登録」を主、「寄付」を準備中とする運用も可能です。
 - ドメイン・公開タイミングが決まったら、`NEXT_PUBLIC_SITE_URL` と OGP 画像（`public/images/og.jpg`）を
   差し替えてください。
+
+---
+
+## 寄付ページ（Stripe）
+
+寄付は Stripe Checkout（ホスト型決済）で実装しています。カード情報はサイトに保存されず、
+PCI 準拠の Stripe 決済ページで処理されます。寄付は公益・支援の文脈のみで、投資・出資の導線は持ちません。
+
+- ページ: `/donate`（日本語）/ `/en/donate`（英語）。完了画面は `/donate/success`。
+- 一回のみ / 毎月（サブスクリプション）と、プリセット金額（¥1,000〜¥10,000）＋任意金額に対応。
+- API: `app/api/checkout/route.ts` が Checkout セッションを作成。金額はサーバー側で再検証します。
+- Webhook: `app/api/stripe/webhook/route.ts` が `checkout.session.completed` 等を受領記録（ログ）。
+
+### セットアップ手順
+
+1. [Stripe ダッシュボード](https://dashboard.stripe.com/apikeys)でシークレットキーを取得し、
+   `STRIPE_SECRET_KEY` に設定する（テストは `sk_test_...`、本番は `sk_live_...`）。
+2. ローカルで Webhook を試す場合:
+   ```bash
+   stripe listen --forward-to localhost:3000/api/stripe/webhook
+   ```
+   表示される署名シークレット（`whsec_...`）を `STRIPE_WEBHOOK_SECRET` に設定する。
+3. 本番では Stripe ダッシュボードの Webhook に
+   `https://<本番ドメイン>/api/stripe/webhook` を登録し、署名シークレットを環境変数に設定する。
+
+> 通貨は JPY（ゼロ十進）。金額は「円」をそのまま整数で扱います。
+> プリセット金額や上限・下限は [`lib/donation.ts`](./lib/donation.ts) で調整できます。
 
 ---
 

@@ -1,4 +1,4 @@
-import type { Dictionary } from "@/content/dictionary";
+import type { Dictionary, Locale } from "@/content/dictionary";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Hero } from "@/components/sections/Hero";
@@ -17,7 +17,7 @@ import { SiteFooter } from "@/components/sections/SiteFooter";
  * 受け取った辞書（dict）を各セクションへ流し込む。
  * 日本語版・英語版の両ページがこのコンポーネントを共有する。
  */
-export function Landing({ dict }: { dict: Dictionary }) {
+export function Landing({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   return (
     <>
       <ScrollProgress />
@@ -31,7 +31,7 @@ export function Landing({ dict }: { dict: Dictionary }) {
         <Beneficiaries content={dict.beneficiaries} />
         <Destinations content={dict.destinations} />
         <Safeguarding content={dict.safeguarding} />
-        <CallToAction content={dict.cta} />
+        <CallToAction content={dict.cta} lang={lang} />
       </main>
       <SiteFooter content={dict.footer} siteName={dict.site.name} />
     </>

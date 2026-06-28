@@ -1,4 +1,4 @@
-import type { Dictionary } from "@/content/dictionary";
+import type { Dictionary, Locale } from "@/content/dictionary";
 import { Reveal } from "@/components/ui/Reveal";
 import { Kicker } from "@/components/ui/Kicker";
 import { DonateButton } from "@/components/ui/DonateButton";
@@ -10,7 +10,14 @@ import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
  * CTA。寄付・お知らせ登録への誘導。
  * 寄付は公益・支援の文脈に閉じる。投資・出資への導線は置かない。
  */
-export function CallToAction({ content: cta }: { content: Dictionary["cta"] }) {
+export function CallToAction({
+  content: cta,
+  lang,
+}: {
+  content: Dictionary["cta"];
+  lang: Locale;
+}) {
+  const donateHref = lang === "en" ? "/en/donate" : "/donate";
   return (
     <section
       id="cta"
@@ -48,7 +55,7 @@ export function CallToAction({ content: cta }: { content: Dictionary["cta"] }) {
           </p>
 
           <div className="mt-10">
-            <DonateButton content={cta} />
+            <DonateButton label={cta.donateLabel} internalHref={donateHref} />
           </div>
         </Reveal>
 

@@ -200,6 +200,36 @@ export const ja: Dictionary = {
     modalClose: "閉じる",
   },
 
+  donate: {
+    backToHome: "トップへ戻る",
+    kicker: "DONATION",
+    heading: "あなたの寄付が、世界へ届く千羽鶴になる",
+    lead: "いただいた寄付は、支援先へ届ける千羽鶴の活動を支えます。一回のみ、または毎月の寄付を選べます。",
+    frequencyLabel: "寄付のかたち",
+    once: "今回のみ",
+    monthly: "毎月",
+    amountLabel: "金額を選ぶ",
+    customLabel: "その他の金額",
+    customPlaceholder: "金額（円）",
+    submit: "この内容で寄付する",
+    submitting: "決済ページへ移動しています…",
+    secureNote:
+      "決済は Stripe により安全に処理されます。カード情報が当サイトに保存されることはありません。",
+    usageNote:
+      "ご寄付は、支援先へ届ける千羽鶴の活動に充てられます。投資・出資ではありません。",
+    amountError: "100円から1,000,000円の範囲で金額をご確認ください。",
+    genericError:
+      "決済ページへ移動できませんでした。時間をおいて、もう一度お試しください。",
+    productNameOnce: "ORIZURU への寄付",
+    productNameMonthly: "ORIZURU への毎月の寄付",
+    success: {
+      kicker: "THANK YOU",
+      heading: "ご寄付、ありがとうございます",
+      body: "あなたの想いは、支援先へ届く一羽の鶴になります。受領の確認メールが届く場合があります。これからも、循環の輪を一緒に広げてください。",
+      backHome: "トップへ戻る",
+    },
+  },
+
   footer: {
     description:
       "介護・ケアの現場から生まれた、循環型のドネーション・プロジェクト。一羽の鶴を、世界へ。",

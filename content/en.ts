@@ -206,6 +206,36 @@ export const en: Dictionary = {
     modalClose: "Close",
   },
 
+  donate: {
+    backToHome: "Back to home",
+    kicker: "DONATION",
+    heading: "Your support becomes a thousand cranes for the world",
+    lead: "Your donation supports the work of carrying cranes to the causes we help. Choose a one-time or monthly gift.",
+    frequencyLabel: "Type of gift",
+    once: "One-time",
+    monthly: "Monthly",
+    amountLabel: "Choose an amount",
+    customLabel: "Other amount",
+    customPlaceholder: "Amount (JPY)",
+    submit: "Donate this amount",
+    submitting: "Taking you to checkout…",
+    secureNote:
+      "Payments are processed securely by Stripe. Your card details are never stored on this site.",
+    usageNote:
+      "Your gift goes to the work of carrying cranes to the causes we support. It is not an investment.",
+    amountError: "Please enter an amount between ¥100 and ¥1,000,000.",
+    genericError:
+      "We could not open the checkout page. Please wait a moment and try again.",
+    productNameOnce: "Donation to ORIZURU",
+    productNameMonthly: "Monthly donation to ORIZURU",
+    success: {
+      kicker: "THANK YOU",
+      heading: "Thank you for your donation",
+      body: "Your goodwill becomes a single crane carried to the causes we support. You may receive a confirmation email. Thank you for widening the circle with us.",
+      backHome: "Back to home",
+    },
+  },
+
   footer: {
     description:
       "A circular donation project born from the care and welfare front lines. A single crane, to the world.",

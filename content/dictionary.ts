@@ -102,6 +102,33 @@ export interface Dictionary {
     emailInvalid: string;
     modalClose: string;
   };
+  donate: {
+    backToHome: string;
+    kicker: string;
+    heading: string;
+    lead: string;
+    frequencyLabel: string;
+    once: string;
+    monthly: string;
+    amountLabel: string;
+    customLabel: string;
+    customPlaceholder: string;
+    submit: string;
+    submitting: string;
+    secureNote: string;
+    usageNote: string;
+    amountError: string;
+    genericError: string;
+    /** Stripe / 領収に表示される商品名 */
+    productNameOnce: string;
+    productNameMonthly: string;
+    success: {
+      kicker: string;
+      heading: string;
+      body: string;
+      backHome: string;
+    };
+  };
   footer: {
     description: string;
     org: string;
