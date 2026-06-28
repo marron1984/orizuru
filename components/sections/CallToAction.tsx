@@ -4,6 +4,7 @@ import { Kicker } from "@/components/ui/Kicker";
 import { DonateButton } from "@/components/ui/DonateButton";
 import { SubscribeForm } from "@/components/ui/SubscribeForm";
 import { CraneField } from "@/components/ui/CraneField";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /**
  * CTA。寄付・お知らせ登録への誘導。
@@ -13,8 +14,26 @@ export function CallToAction() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden bg-gradient-to-b from-navy-700 to-navy py-24 sm:py-32"
+      className="relative overflow-hidden bg-navy py-24 sm:py-32"
     >
+      {/* 背景写真（ネイビースクリムで可読性を確保） */}
+      <div aria-hidden className="absolute inset-0">
+        <ImageWithFallback
+          src={cta.image}
+          alt=""
+          fill
+          sizes="100vw"
+          className="h-full w-full"
+        />
+      </div>
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(26,33,56,0.82) 0%, rgba(26,33,56,0.92) 100%)",
+        }}
+      />
       <CraneField className="opacity-60" />
       <div className="section-shell relative">
         <Reveal className="mx-auto flex max-w-3xl flex-col items-center text-center">

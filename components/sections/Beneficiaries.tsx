@@ -1,6 +1,7 @@
 import { beneficiaries } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /** 守る対象（受益の順番）。当事者本人→家族→ケアスタッフ→世界の支援先。 */
 export function Beneficiaries() {
@@ -39,11 +40,24 @@ export function Beneficiaries() {
           ))}
         </ol>
 
-        <Reveal delay={0.1} className="mt-14">
-          <blockquote className="mx-auto max-w-3xl border-l-2 border-gold pl-6 font-serif text-lg leading-relaxed text-navy sm:text-xl">
-            {beneficiaries.statement}
-          </blockquote>
-        </Reveal>
+        <div className="mt-14 grid items-center gap-8 lg:grid-cols-2">
+          <Reveal className="overflow-hidden rounded-3xl">
+            <div className="relative aspect-[4/3] w-full">
+              <ImageWithFallback
+                src={beneficiaries.image}
+                alt={beneficiaries.imageAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 36rem"
+                className="h-full w-full"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <blockquote className="border-l-2 border-gold pl-6 font-serif text-lg leading-relaxed text-navy sm:text-xl">
+              {beneficiaries.statement}
+            </blockquote>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

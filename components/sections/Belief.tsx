@@ -2,6 +2,7 @@ import { belief } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Crane } from "@/components/ui/Crane";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /** 私たちの信念（ケアは、善意の塊）。これまで→これからの対比。 */
 export function Belief() {
@@ -63,11 +64,30 @@ export function Belief() {
           </Reveal>
         </div>
 
-        {/* ステートメント */}
+        {/* ステートメント（写真の上にネイビースクリムを重ねて可読性を確保） */}
         <Reveal delay={0.1} className="mt-14">
-          <p className="mx-auto max-w-3xl text-balance text-center font-serif text-xl leading-relaxed text-paper sm:text-2xl">
-            {belief.statement}
-          </p>
+          <div className="relative overflow-hidden rounded-3xl">
+            <div className="absolute inset-0">
+              <ImageWithFallback
+                src={belief.image}
+                alt={belief.imageAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 72rem"
+                className="h-full w-full"
+              />
+            </div>
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(26,33,56,0.55) 0%, rgba(26,33,56,0.78) 100%)",
+              }}
+            />
+            <p className="relative mx-auto max-w-3xl px-6 py-20 text-balance text-center font-serif text-xl leading-relaxed text-paper sm:px-10 sm:py-24 sm:text-2xl">
+              {belief.statement}
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>

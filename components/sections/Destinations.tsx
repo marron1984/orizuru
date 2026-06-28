@@ -2,6 +2,7 @@ import { destinations } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Crane } from "@/components/ui/Crane";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /** 届ける先（世界の支援先）。子ども支援／難病の治療費支援／災害支援。 */
 export function Destinations() {
@@ -26,7 +27,19 @@ export function Destinations() {
           tone="onDark"
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <Reveal className="mt-12 overflow-hidden rounded-3xl border border-white/10">
+          <div className="relative aspect-[21/9] w-full">
+            <ImageWithFallback
+              src={destinations.image}
+              alt={destinations.imageAlt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 72rem"
+              className="h-full w-full"
+            />
+          </div>
+        </Reveal>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
           {destinations.items.map((item, i) => (
             <Reveal
               key={item.title}

@@ -71,6 +71,8 @@ export const belief = {
   },
   statement:
     "高齢者も、障害のある方も、生活保護の方も、難病の方も、孤児も ── ケアを必要とするすべての人が、一羽の鶴を通じて世界とつながります。",
+  image: "/images/belief.jpg",
+  imageAlt: "世代を越えて、ともに一羽の鶴を折る人たち",
 } as const;
 
 export const solution = {
@@ -134,12 +136,16 @@ export const beneficiaries = {
   ],
   statement:
     "親なき後の不安を、当事者の自立で断つ。誰かに依存し続ける未来ではなく、自ら世界へ働きかける未来を、私たちは選びます。",
+  image: "/images/beneficiaries.jpg",
+  imageAlt: "鶴を手に、笑顔で語らう子どもたち",
 } as const;
 
 export const destinations = {
   kicker: "WHERE IT GOES",
   heading: "届ける先",
   lead: "千羽鶴とともに、世界からの応援を無償で届けます。",
+  image: "/images/destinations.jpg",
+  imageAlt: "屋外で、鶴を空へ掲げる子どもたち",
   items: [
     {
       title: "子ども支援",
@@ -179,6 +185,8 @@ export const safeguarding = {
 export const cta = {
   kicker: "JOIN THE CIRCLE",
   heading: "あなたの支援が、世界へ届く千羽鶴になる",
+  image: "/images/cta.jpg",
+  imageAlt: "吊るされた折り鶴を見上げる子どもたち",
   body: "一羽の鶴が世界へ向かう旅を、あなたの寄付が支えます。まずは、プロジェクトのお知らせから受け取ってください。",
   donateLabel: "寄付で支援する",
   donatePreparingTitle: "寄付の受け皿を準備しています",
