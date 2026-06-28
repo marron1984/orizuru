@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-serif: "Noto Serif JP", serif;
+    --font-sans: "Noto Sans JP", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* セクションへのアンカー移動時に固定ヘッダー分のオフセットを確保 */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-paper text-navy font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 見出しは明朝系で格調を出す */
+  h1, h2, h3 {
+    @apply font-serif;
+    word-break: auto-phrase;
+  }
+
+  /* キーボード操作時のフォーカスを明確に（アクセシビリティ） */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-paper;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-navy;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-12;
+  }
+
+  /* 金色の細い区切り線 */
+  .gold-rule {
+    @apply h-px w-12 bg-gold;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* モーション抑制環境では一切の動きを無効化（思想とも一致するアクセシビリティ配慮） */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
