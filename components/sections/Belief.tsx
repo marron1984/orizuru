@@ -1,11 +1,11 @@
-import { belief } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Crane } from "@/components/ui/Crane";
 import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /** 私たちの信念（ケアは、善意の塊）。これまで→これからの対比。 */
-export function Belief() {
+export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
   return (
     <section id="belief" className="relative overflow-hidden bg-navy py-24 sm:py-32">
       {/* 背景のかすかな金グラデーション */}
@@ -44,7 +44,7 @@ export function Belief() {
             delay={0.1}
             className="flex items-center justify-center text-gold"
           >
-            <Crane className="h-12 w-12 rotate-90 md:rotate-0" title="主客の反転" />
+            <Crane className="h-12 w-12 rotate-90 md:rotate-0" title={belief.craneTitle} />
           </Reveal>
 
           {/* これから */}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
-import { hero } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { Kicker } from "@/components/ui/Kicker";
 import { ScrollCue } from "@/components/ui/ScrollCue";
 import { CraneField } from "@/components/ui/CraneField";
@@ -16,7 +16,7 @@ import { CraneField } from "@/components/ui/CraneField";
  * 注記: 背景の人物・現場写真はイメージ素材を含む前提。実在の利用者写真ではない。
  * 実画像は public/images/hero.jpg を配置すれば反映される。
  */
-export function Hero() {
+export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const [imgFailed, setImgFailed] = useState(false);
@@ -33,7 +33,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      aria-label="ヒーロー"
+      aria-label={hero.regionLabel}
       className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy"
     >
       {/* 背景画像（ネイビーフォールバック付き） */}

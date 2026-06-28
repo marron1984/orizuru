@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cta } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -13,7 +13,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  * クライアント側でバリデーションし、/api/subscribe へ送信する。
  * 実送信先は環境変数（SUBSCRIBE_ENDPOINT）でプレースホルダ化されている。
  */
-export function SubscribeForm() {
+export function SubscribeForm({ content: cta }: { content: Dictionary["cta"] }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -72,7 +72,7 @@ export function SubscribeForm() {
             className="flex flex-col gap-3"
           >
             <label htmlFor="subscribe-email" className="sr-only">
-              メールアドレス
+              {cta.emailLabel}
             </label>
             <div className="flex flex-col gap-3 sm:flex-row">
               <input
@@ -95,7 +95,7 @@ export function SubscribeForm() {
                 disabled={status === "submitting"}
                 className="inline-flex shrink-0 items-center justify-center rounded-full border border-paper/30 px-7 py-3.5 text-sm font-medium text-paper transition-colors hover:border-gold hover:text-gold-light disabled:opacity-60 focus-visible:ring-offset-navy"
               >
-                {status === "submitting" ? "送信中…" : cta.subscribeLabel}
+                {status === "submitting" ? cta.subscribeSubmitting : cta.subscribeLabel}
               </button>
             </div>
             {status === "error" ? (

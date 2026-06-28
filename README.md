@@ -46,16 +46,25 @@ npm run lint    # ESLint
 
 ```
 app/
-  layout.tsx              ルートレイアウト / フォント / metadata(OGP, lang=ja)
-  page.tsx                1ページ構成（全セクションを縦に合成）
+  fonts.ts                共有フォント定義（Noto Serif/Sans JP）
+  metadata.ts             ロケール別 metadata 生成（OGP / hreflang）
   globals.css             Tailwind + ベーススタイル / prefers-reduced-motion
+  (ja)/                   日本語ルート（lang="ja"）
+    layout.tsx            ルートレイアウト
+    page.tsx              /（日本語版）
+  (en)/                   英語ルート（lang="en"）
+    layout.tsx            ルートレイアウト
+    en/page.tsx           /en（英語版）
   api/subscribe/route.ts  メール登録 API の雛形
 components/
-  SiteHeader.tsx          固定ヘッダー
-  sections/               各セクション（Hero〜SiteFooter）
+  Landing.tsx             1ページ構成（言語非依存・辞書を各セクションへ配分）
+  SiteHeader.tsx          固定ヘッダー（言語切替リンク付き）
+  sections/               各セクション（Hero〜SiteFooter／content を props で受け取る）
   ui/                     再利用パーツ（Reveal / Kicker / 画像フォールバック 等）
 content/
-  site.ts                 サイト内のコピーを全て集約（編集はここ）
+  dictionary.ts           Dictionary 型・ロケールローダー（getDictionary）
+  ja.ts                   日本語コピー
+  en.ts                   英語コピー
 lib/
   motion.ts               共有モーション variants
 public/images/            画像プレースホルダ（差し替え方法は同ディレクトリの README）
@@ -63,10 +72,25 @@ public/images/            画像プレースホルダ（差し替え方法は同
 
 ---
 
+## 多言語（日本語 / 英語）
+
+本サイトは日本語版（`/`）と英語版（`/en`）を提供します。
+
+- 日本語コピー: [`content/ja.ts`](./content/ja.ts)
+- 英語コピー: [`content/en.ts`](./content/en.ts)
+- 共通の型: [`content/dictionary.ts`](./content/dictionary.ts) の `Dictionary`
+
+両ファイルは同じ `Dictionary` 型に従うため、片方にキーを追加するともう片方でも
+TypeScript が不足を検知します（翻訳漏れを防止）。ヘッダー右上の言語切替リンクで
+相互に行き来でき、`hreflang`（ja / en / x-default）と OGP の `locale` も自動設定されます。
+
+言語を増やす場合は、`content/<locale>.ts` を追加し、`content/dictionary.ts` の
+`locales` と `dictionaries`、`app/` のルート（route group）を追加してください。
+
 ## コピー（文言）の編集
 
-サイトに表示される文言は、すべて [`content/site.ts`](./content/site.ts) に集約しています。
-本文の編集は基本的にこのファイルだけで完結します。
+サイトに表示される文言は、すべて `content/ja.ts`（日本語）と `content/en.ts`（英語）に
+集約しています。本文の編集は基本的にこの2ファイルだけで完結します。
 
 ### 表記ルール（厳守）
 

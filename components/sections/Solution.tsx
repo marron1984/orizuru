@@ -1,10 +1,10 @@
-import { solution } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /** ソリューション（折る→束ねる→届ける→次の一巡へ）。工程に写真を対応。 */
-export function Solution() {
+export function Solution({ content: solution }: { content: Dictionary["solution"] }) {
   return (
     <section id="solution" className="bg-paper-2 py-24 sm:py-32">
       <div className="section-shell">

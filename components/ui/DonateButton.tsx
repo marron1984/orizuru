@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { cta } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 
 /**
  * 寄付CTAボタン。
@@ -11,7 +11,13 @@ import { cta } from "@/content/site";
  *
  * 寄付は常にミッション（公益・支援）の文脈に閉じる。
  */
-export function DonateButton({ className = "" }: { className?: string }) {
+export function DonateButton({
+  content: cta,
+  className = "",
+}: {
+  content: Dictionary["cta"];
+  className?: string;
+}) {
   const donateUrl = process.env.NEXT_PUBLIC_DONATE_URL;
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
@@ -63,7 +69,7 @@ export function DonateButton({ className = "" }: { className?: string }) {
             exit={reduce ? undefined : { opacity: 0 }}
           >
             <button
-              aria-label="閉じる"
+              aria-label={cta.modalClose}
               tabIndex={-1}
               className="absolute inset-0 bg-navy/70 backdrop-blur-sm"
               onClick={() => setOpen(false)}
@@ -92,7 +98,7 @@ export function DonateButton({ className = "" }: { className?: string }) {
                 onClick={() => setOpen(false)}
                 className="mt-6 inline-flex items-center justify-center rounded-full bg-navy px-6 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-navy-700"
               >
-                閉じる
+                {cta.modalClose}
               </button>
             </motion.div>
           </motion.div>

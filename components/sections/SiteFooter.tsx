@@ -1,8 +1,14 @@
-import { footer, site } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { Crane } from "@/components/ui/Crane";
 
 /** フッター。主体・連携（FSUN）・注記・コピーライト。 */
-export function SiteFooter() {
+export function SiteFooter({
+  content: footer,
+  siteName,
+}: {
+  content: Dictionary["footer"];
+  siteName: string;
+}) {
   const year = 2026; // 公開年。更新時に見直す。
 
   return (
@@ -16,7 +22,7 @@ export function SiteFooter() {
                 <Crane className="h-7 w-7" />
               </span>
               <span className="font-serif text-xl font-semibold text-paper">
-                {site.name}
+                {siteName}
               </span>
             </div>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-paper/60">
@@ -28,19 +34,21 @@ export function SiteFooter() {
           <div className="flex flex-col gap-4 text-sm text-paper/70">
             <div>
               <p className="text-xs uppercase tracking-kicker text-paper/40">
-                Organization
+                {footer.orgLabel}
               </p>
               <p className="mt-2 leading-relaxed">{footer.org}</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-kicker text-paper/40">
-                Partnership
+                {footer.partnerLabel}
               </p>
               {/* FSUN は国連そのものではない。連携 までの表記。 */}
               <p className="mt-2 leading-relaxed">{footer.partner}</p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-kicker text-paper/40">Social</p>
+              <p className="text-xs uppercase tracking-kicker text-paper/40">
+                {footer.socialLabel}
+              </p>
               <ul className="mt-2 flex gap-4">
                 {footer.social.map((s) => (
                   <li key={s.label}>

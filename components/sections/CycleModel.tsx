@@ -1,4 +1,4 @@
-import { cycle } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
  * ORIZURU を中心に、現場・ドナー・世界の支援先がひとつの円でつながる。
  * 軽量な SVG（装飾）＋ テキストの凡例（情報）で構成し、アクセシブルに保つ。
  */
-export function CycleModel() {
+export function CycleModel({ content: cycle }: { content: Dictionary["cycle"] }) {
   const { nodes } = cycle;
   const legend = [
     { ...nodes.field, color: "text-gold" },
@@ -32,7 +32,7 @@ export function CycleModel() {
               viewBox="0 0 400 400"
               className="h-auto w-full"
               role="img"
-              aria-label="ORIZURU を中心に、ケアの現場・ドナー・世界の支援先が円でつながる循環図"
+              aria-label={cycle.diagramLabel}
             >
               <defs>
                 <marker

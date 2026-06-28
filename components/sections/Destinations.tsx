@@ -1,11 +1,15 @@
-import { destinations } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Crane } from "@/components/ui/Crane";
 import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /** 届ける先（世界の支援先）。子ども支援／難病の治療費支援／災害支援。 */
-export function Destinations() {
+export function Destinations({
+  content: destinations,
+}: {
+  content: Dictionary["destinations"];
+}) {
   return (
     <section
       id="destinations"

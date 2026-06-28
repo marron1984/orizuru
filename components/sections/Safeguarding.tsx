@@ -1,4 +1,4 @@
-import { safeguarding } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -7,7 +7,11 @@ import { Reveal } from "@/components/ui/Reveal";
  * 発信は本人の選択。住居・ケアの提供条件には結びつけない。
  * 肖像権・同意・撤回の自由。未成年・判断能力が限定的な方への特別な配慮。
  */
-export function Safeguarding() {
+export function Safeguarding({
+  content: safeguarding,
+}: {
+  content: Dictionary["safeguarding"];
+}) {
   return (
     <section id="safeguarding" className="bg-paper py-24 sm:py-32">
       <div className="section-shell">

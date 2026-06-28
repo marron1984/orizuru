@@ -1,10 +1,14 @@
-import { beneficiaries } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 
 /** 守る対象（受益の順番）。当事者本人→家族→ケアスタッフ→世界の支援先。 */
-export function Beneficiaries() {
+export function Beneficiaries({
+  content: beneficiaries,
+}: {
+  content: Dictionary["beneficiaries"];
+}) {
   return (
     <section id="beneficiaries" className="bg-paper-2 py-24 sm:py-32">
       <div className="section-shell">

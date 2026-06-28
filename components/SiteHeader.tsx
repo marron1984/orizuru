@@ -1,13 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { nav, site } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 
 /**
  * 固定ヘッダー。スクロールで背景を不透明化する控えめな演出。
  * ヒーロー上では透明、スクロール後はネイビーの半透明ガラス。
+ * 言語切替リンク（日本語 / English）を備える。
  */
-export function SiteHeader() {
+export function SiteHeader({
+  nav,
+  siteName,
+}: {
+  nav: Dictionary["nav"];
+  siteName: string;
+}) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,14 +34,14 @@ export function SiteHeader() {
       }`}
     >
       <nav
-        aria-label="メインナビゲーション"
-        className="section-shell flex h-16 items-center justify-between"
+        aria-label={nav.menuLabel}
+        className="section-shell flex h-16 items-center justify-between gap-4"
       >
         <a
           href="#main"
           className="font-serif text-lg font-semibold tracking-wide text-paper"
         >
-          {site.name}
+          {siteName}
         </a>
         <div className="hidden items-center gap-8 md:flex">
           {nav.links.map((link) => (
@@ -46,12 +54,24 @@ export function SiteHeader() {
             </a>
           ))}
         </div>
-        <a
-          href="#cta"
-          className="rounded-full border border-gold/60 px-5 py-2 text-sm font-medium text-gold-light transition-colors hover:bg-gold hover:text-navy"
-        >
-          {nav.cta}
-        </a>
+        <div className="flex items-center gap-3">
+          {/* 言語切替（別ロケールのルートへ遷移） */}
+          <Link
+            href={nav.switch.href}
+            hrefLang={nav.switch.href === "/en" ? "en" : "ja"}
+            aria-label={nav.switch.ariaLabel}
+            className="text-sm text-paper/70 transition-colors hover:text-gold-light"
+          >
+            {nav.switch.label}
+          </Link>
+          <span aria-hidden className="h-4 w-px bg-white/20" />
+          <a
+            href="#cta"
+            className="rounded-full border border-gold/60 px-5 py-2 text-sm font-medium text-gold-light transition-colors hover:bg-gold hover:text-navy"
+          >
+            {nav.cta}
+          </a>
+        </div>
       </nav>
     </header>
   );

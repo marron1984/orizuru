@@ -1,10 +1,10 @@
-import { problem } from "@/content/site";
+import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { stagger } from "@/lib/motion";
 
 /** 問題提起（三つの分断）。3カラム。 */
-export function Problem() {
+export function Problem({ content: problem }: { content: Dictionary["problem"] }) {
   return (
     <section id="problem" className="bg-paper py-24 sm:py-32">
       <div className="section-shell">
