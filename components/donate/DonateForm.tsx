@@ -56,7 +56,7 @@ export function DonateForm({ content: d, lang }: Props) {
   }
 
   const baseField =
-    "rounded-full border px-5 py-3.5 text-sm transition-colors focus-visible:ring-offset-paper";
+    "rounded-none border px-5 py-3.5 text-sm transition-colors focus-visible:ring-offset-paper";
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-8">
@@ -80,7 +80,7 @@ export function DonateForm({ content: d, lang }: Props) {
                 role="radio"
                 aria-checked={active}
                 onClick={() => setFrequency(f.key)}
-                className={`rounded-full border px-5 py-3 text-sm font-medium transition-colors ${
+                className={`rounded-none border px-5 py-3 text-sm font-medium transition-colors ${
                   active
                     ? "border-gold bg-gold text-navy"
                     : "border-hairline bg-white text-navy hover:border-gold/60"
@@ -109,7 +109,7 @@ export function DonateForm({ content: d, lang }: Props) {
                   setCustom("");
                   if (error) setError("");
                 }}
-                className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
+                className={`rounded-none border px-4 py-3 text-sm font-semibold transition-colors ${
                   active
                     ? "border-gold bg-gold/10 text-navy"
                     : "border-hairline bg-white text-navy hover:border-gold/60"
@@ -156,7 +156,7 @@ export function DonateForm({ content: d, lang }: Props) {
       <button
         type="submit"
         disabled={submitting}
-        className="inline-flex items-center justify-center rounded-full bg-gold px-8 py-4 text-sm font-medium text-navy shadow-lg shadow-gold/20 transition-all hover:bg-gold-light hover:shadow-gold/30 disabled:opacity-60"
+        className="inline-flex items-center justify-center rounded-none bg-gold px-8 py-4 text-sm font-medium tracking-wide text-navy transition-colors hover:bg-gold-light disabled:opacity-60"
       >
         {submitting ? d.submitting : d.submit}
       </button>

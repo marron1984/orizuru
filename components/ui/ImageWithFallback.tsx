@@ -35,14 +35,7 @@ export function ImageWithFallback({
   const [failed, setFailed] = useState(false);
 
   return (
-    <span
-      className={`relative block overflow-hidden bg-navy ${className}`}
-      // 画像が無い間も、ネイビーに金のかすかなグラデーションで品よく見せる
-      style={{
-        backgroundImage:
-          "radial-gradient(120% 80% at 70% 0%, rgba(200,164,81,0.16), transparent 60%)",
-      }}
-    >
+    <span className={`relative block overflow-hidden bg-navy-700 ${className}`}>
       {!failed ? (
         <Image
           src={src}

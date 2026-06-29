@@ -18,7 +18,7 @@ export function Solution({ content: solution }: { content: Dictionary["solution"
           {solution.steps.map((step) => (
             <StaggerItem
               key={step.no}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-hairline bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-navy/10"
+              className="group flex flex-col overflow-hidden border border-hairline bg-white transition-colors duration-300 hover:border-gold/40"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <ImageWithFallback

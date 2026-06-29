@@ -6,16 +6,16 @@ type KickerProps = {
 };
 
 /**
- * 英語ラベル（キッカー）。大文字＋広めのレタースペーシング、金色。
+ * セクションの英語ラベル（キッカー）。
+ * 大文字＋トラッキングの控えめなエディトリアル・ラベル（装飾チップは付けない）。
  */
 export function Kicker({ children, tone = "onLight", className = "" }: KickerProps) {
   return (
     <p
-      className={`flex items-center gap-3 text-xs font-medium uppercase tracking-kicker ${
+      className={`text-[0.7rem] font-semibold uppercase tracking-kicker ${
         tone === "onDark" ? "text-gold-light" : "text-gold"
       } ${className}`}
     >
-      <span aria-hidden className="h-px w-6 bg-current opacity-60" />
       {children}
     </p>
   );

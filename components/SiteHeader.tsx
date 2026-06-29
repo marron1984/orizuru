@@ -67,7 +67,7 @@ export function SiteHeader({
           <span aria-hidden className="h-4 w-px bg-white/20" />
           <a
             href="#cta"
-            className="rounded-full border border-gold/60 px-5 py-2 text-sm font-medium text-gold-light transition-colors hover:bg-gold hover:text-navy"
+            className="rounded-none border border-gold/60 px-5 py-2 text-sm font-medium tracking-wide text-gold-light transition-colors hover:bg-gold hover:text-navy"
           >
             {nav.cta}
           </a>

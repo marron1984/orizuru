@@ -31,7 +31,7 @@ export function DonateSuccess({
         <p className="mt-5 text-pretty leading-relaxed text-paper/80">{s.body}</p>
         <Link
           href={home}
-          className="mt-10 inline-flex items-center justify-center rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-navy transition-colors hover:bg-gold-light"
+          className="mt-10 inline-flex items-center justify-center rounded-none bg-gold px-8 py-3.5 text-sm font-medium tracking-wide text-navy transition-colors hover:bg-gold-light"
         >
           {s.backHome}
         </Link>

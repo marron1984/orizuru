@@ -63,13 +63,13 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
         ) : null}
       </motion.div>
 
-      {/* ネイビースクリム（左下を暗くして文字可読性を確保） */}
+      {/* ネイビースクリム（左／下を暗くして文字可読性を確保。放射状ではなく直線で） */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(26,33,56,0.55) 0%, rgba(26,33,56,0.35) 35%, rgba(26,33,56,0.85) 100%), radial-gradient(120% 90% at 15% 80%, rgba(26,33,56,0.7), transparent 60%)",
+            "linear-gradient(90deg, rgba(26,33,56,0.88) 0%, rgba(26,33,56,0.5) 42%, rgba(26,33,56,0.18) 100%), linear-gradient(180deg, rgba(26,33,56,0.35) 0%, transparent 40%, rgba(26,33,56,0.8) 100%)",
         }}
       />
 

@@ -34,10 +34,23 @@ const config: Config = {
         sans: ["var(--font-sans)", "Noto Sans JP", "sans-serif"],
       },
       letterSpacing: {
-        kicker: "0.28em",
+        kicker: "0.2em",
       },
       maxWidth: {
         content: "72rem",
+      },
+      // 角丸を引き締める（テンプレ的な“ぷっくり”感を抑え、編集的でシャープに）。
+      // 円形要素（ドット・バッジ・アイコン）のための full は維持する。
+      borderRadius: {
+        none: "0px",
+        sm: "1px",
+        DEFAULT: "2px",
+        md: "2px",
+        lg: "3px",
+        xl: "4px",
+        "2xl": "5px",
+        "3xl": "6px",
+        full: "9999px",
       },
       keyframes: {
         "fade-up": {

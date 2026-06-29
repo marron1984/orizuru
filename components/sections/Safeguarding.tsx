@@ -25,7 +25,7 @@ export function Safeguarding({
           {safeguarding.items.map((item) => (
             <StaggerItem
               key={item.title}
-              className="group rounded-2xl border border-hairline bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10"
+              className="group border border-hairline bg-white p-8 transition-colors duration-300 hover:border-gold/50"
             >
               <span
                 aria-hidden

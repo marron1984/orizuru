@@ -9,15 +9,6 @@ import { slideLeft, slideRight, popIn } from "@/lib/motion";
 export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
   return (
     <section id="belief" className="relative overflow-hidden bg-navy py-24 sm:py-32">
-      {/* 背景のかすかな金グラデーション */}
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(80% 60% at 80% 10%, rgba(200,164,81,0.10), transparent 60%)",
-        }}
-      />
       <div className="section-shell relative">
         <SectionHeading
           kicker={belief.kicker}

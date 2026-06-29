@@ -17,7 +17,7 @@ export function Problem({ content: problem }: { content: Dictionary["problem"] }
           {problem.items.map((item) => (
             <StaggerItem
               key={item.no}
-              className="group relative rounded-2xl border border-hairline bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10"
+              className="group relative border border-hairline bg-white p-8 transition-colors duration-300 hover:border-gold/50"
             >
               <span className="font-serif text-4xl font-semibold text-gold/70">
                 {item.no}

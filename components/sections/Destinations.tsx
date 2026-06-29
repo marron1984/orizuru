@@ -16,14 +16,6 @@ export function Destinations({
       id="destinations"
       className="relative overflow-hidden bg-navy py-24 sm:py-32"
     >
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(70% 50% at 20% 0%, rgba(200,164,81,0.10), transparent 60%)",
-        }}
-      />
       <div className="section-shell relative">
         <SectionHeading
           kicker={destinations.kicker}
@@ -46,7 +38,7 @@ export function Destinations({
           {destinations.items.map((item) => (
             <StaggerItem
               key={item.title}
-              className="group rounded-2xl border border-white/10 bg-navy-700/40 p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold/40 hover:bg-navy-700/60"
+              className="group border border-white/10 bg-navy-700/40 p-8 transition-colors duration-300 hover:border-gold/40 hover:bg-navy-700/60"
             >
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-navy-500/40 text-gold-light transition-all duration-300 group-hover:scale-110 group-hover:text-gold">
                 <Crane className="h-6 w-6" />

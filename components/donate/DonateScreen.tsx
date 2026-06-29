@@ -54,14 +54,16 @@ export function DonateScreen({ dict, lang, configured }: Props) {
             <span aria-hidden>←</span> {d.backToHome}
           </Link>
 
-          <p className="mt-10 flex items-center gap-3 text-xs font-medium uppercase tracking-kicker text-gold">
-            <span aria-hidden className="h-px w-6 bg-current opacity-60" />
-            {d.kicker}
-          </p>
-          <h1 className="mt-5 text-balance font-serif text-3xl font-semibold leading-tight text-navy sm:text-4xl">
+          <div className="mt-10 flex items-center gap-4">
+            <span aria-hidden className="h-px w-10 bg-navy/20" />
+            <p className="text-[0.7rem] font-semibold uppercase tracking-kicker text-gold">
+              {d.kicker}
+            </p>
+          </div>
+          <h1 className="mt-6 text-balance font-serif text-3xl font-medium leading-[1.25] tracking-tight text-navy sm:text-4xl">
             {d.heading}
           </h1>
-          <p className="mt-5 text-pretty leading-relaxed text-ink-muted">
+          <p className="mt-6 text-pretty leading-relaxed text-ink-muted">
             {d.lead}
           </p>
 
@@ -78,7 +80,7 @@ export function DonateScreen({ dict, lang, configured }: Props) {
                 </p>
                 <Link
                   href={home}
-                  className="mt-6 inline-flex items-center justify-center rounded-full bg-navy px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-navy-700"
+                  className="mt-6 inline-flex items-center justify-center rounded-none bg-navy px-6 py-3 text-sm font-medium tracking-wide text-paper transition-colors hover:bg-navy-700"
                 >
                   {d.backToHome}
                 </Link>

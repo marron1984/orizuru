@@ -26,7 +26,7 @@ export function Beneficiaries({
             <StaggerItem
               key={step.no}
               as="li"
-              className="group relative rounded-2xl border border-hairline bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-navy/10"
+              className="group relative border border-hairline bg-white p-6 transition-colors duration-300 hover:border-gold/50"
             >
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-navy font-serif text-xs font-semibold text-gold-light">

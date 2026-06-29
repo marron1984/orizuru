@@ -88,12 +88,12 @@ export function SubscribeForm({ content: cta }: { content: Dictionary["cta"] }) 
                 placeholder={cta.emailPlaceholder}
                 aria-invalid={status === "error"}
                 aria-describedby={status === "error" ? "subscribe-error" : undefined}
-                className="w-full flex-1 rounded-full border border-paper/20 bg-navy-700/60 px-5 py-3.5 text-sm text-paper placeholder:text-paper/40 focus-visible:ring-offset-navy"
+                className="w-full flex-1 rounded-none border border-paper/20 bg-navy-700/60 px-5 py-3.5 text-sm text-paper placeholder:text-paper/40 focus-visible:ring-offset-navy"
               />
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex shrink-0 items-center justify-center rounded-full border border-paper/30 px-7 py-3.5 text-sm font-medium text-paper transition-colors hover:border-gold hover:text-gold-light disabled:opacity-60 focus-visible:ring-offset-navy"
+                className="inline-flex shrink-0 items-center justify-center rounded-none border border-paper/30 px-7 py-3.5 text-sm font-medium tracking-wide text-paper transition-colors hover:border-gold hover:bg-gold hover:text-navy disabled:opacity-60 focus-visible:ring-offset-navy"
               >
                 {status === "submitting" ? cta.subscribeSubmitting : cta.subscribeLabel}
               </button>
