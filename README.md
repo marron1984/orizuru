@@ -127,11 +127,17 @@ TypeScript が不足を検知します（翻訳漏れを防止）。ヘッダー
 | `STRIPE_SECRET_KEY`     | Stripe シークレットキー（寄付決済）                                   | `/donate` は「準備中」表示にフォールバック    |
 | `STRIPE_WEBHOOK_SECRET` | Stripe Webhook 署名シークレット（受領記録・任意）                    | Webhook は 503 を返す（記録なしでも決済は可） |
 | `NEXT_PUBLIC_DONATE_URL`| 外部の寄付ページ URL（任意）                                          | 内蔵の `/donate`（Stripe）を使用             |
-| `SUBSCRIBE_ENDPOINT`    | メール登録の送信先（Resend / Formspree / Webhook 等）                | API はバリデーションのみ行い、ログ出力で成功 |
+| `SUBSCRIBE_NOTIFY_EMAIL`| お知らせ登録の届け先メールアドレス                                   | 既定 `yoshida@aska-g.com`（`lib/notify.ts`） |
+| `RESEND_API_KEY`        | Resend でメール通知する場合のキー                                    | メール送信せず Webhook かログにフォールバック |
+| `RESEND_FROM`           | Resend の送信元（本番は検証済み独自ドメイン）                        | `onboarding@resend.dev`（テスト用）           |
+| `SUBSCRIBE_ENDPOINT`    | 代替: 登録を転送する Webhook（Formspree 等）                         | 未設定かつ Resend 無ならログ出力で成功       |
 | `NEXT_PUBLIC_SITE_URL`  | 公開サイトの正規 URL（OGP / `metadataBase`）                         | `https://orizuru.example.com` を使用          |
 
 ### 運用メモ
 
+- お知らせ登録（フッター／CTA のメール登録）は `SUBSCRIBE_NOTIFY_EMAIL`（既定
+  `yoshida@aska-g.com`）へ届きます。`RESEND_API_KEY` を設定するとそのアドレスへ通知
+  メールが送信され、未設定なら `SUBSCRIBE_ENDPOINT`（Webhook）かサーバーログに記録します。
 - 寄付決済（Stripe）や実メール送信の接続は、寄付の受け皿（公益財団／認定NPO の口座・規約）が
   固まってから行います。`STRIPE_SECRET_KEY` 未設定のあいだ `/donate` は準備中表示となるため、
   キー未設定のまま安全に公開できます。CTA は「お知らせ登録」を主、「寄付」を準備中とする運用も可能です。
