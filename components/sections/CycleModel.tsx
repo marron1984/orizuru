@@ -1,3 +1,6 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -6,8 +9,10 @@ import { Reveal } from "@/components/ui/Reveal";
  * 循環モデルの簡易図。
  * ORIZURU を中心に、現場・ドナー・世界の支援先がひとつの円でつながる。
  * 軽量な SVG（装飾）＋ テキストの凡例（情報）で構成し、アクセシブルに保つ。
+ * リングの流れ・中心のパルス・ハローで循環を表現（reduced-motion 時は静止）。
  */
 export function CycleModel({ content: cycle }: { content: Dictionary["cycle"] }) {
+  const reduce = useReducedMotion();
   const { nodes } = cycle;
   const legend = [
     { ...nodes.field, color: "text-gold" },
@@ -48,16 +53,22 @@ export function CycleModel({ content: cycle }: { content: Dictionary["cycle"] })
                 </marker>
               </defs>
 
-              {/* 循環を示す円弧（金） */}
-              <circle
+              {/* 循環を示す円弧（金）。破線が流れて循環を表現する。 */}
+              <motion.circle
                 cx="200"
                 cy="200"
                 r="130"
                 fill="none"
                 stroke="#C8A451"
-                strokeOpacity="0.35"
+                strokeOpacity="0.4"
                 strokeWidth="1.5"
-                strokeDasharray="4 6"
+                strokeDasharray="6 8"
+                animate={reduce ? undefined : { strokeDashoffset: [0, -56] }}
+                transition={
+                  reduce
+                    ? undefined
+                    : { duration: 4, repeat: Infinity, ease: "linear" }
+                }
               />
               {/* 流れの矢印（円周上に3つ） */}
               {[0, 120, 240].map((deg) => {
@@ -110,8 +121,33 @@ export function CycleModel({ content: cycle }: { content: Dictionary["cycle"] })
                 );
               })}
 
-              {/* 中心ノード ORIZURU */}
-              <circle cx="200" cy="200" r="58" fill="#C8A451" />
+              {/* 中心からの発信を表すハロー */}
+              {!reduce ? (
+                <motion.circle
+                  cx="200"
+                  cy="200"
+                  fill="none"
+                  stroke="#C8A451"
+                  strokeWidth="1.5"
+                  initial={{ r: 58, opacity: 0.5 }}
+                  animate={{ r: [58, 124], opacity: [0.5, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+                />
+              ) : null}
+
+              {/* 中心ノード ORIZURU（呼吸するパルス） */}
+              <motion.circle
+                cx="200"
+                cy="200"
+                r="58"
+                fill="#C8A451"
+                animate={reduce ? undefined : { r: [58, 62, 58] }}
+                transition={
+                  reduce
+                    ? undefined
+                    : { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }
+              />
               <text
                 x="200"
                 y="205"

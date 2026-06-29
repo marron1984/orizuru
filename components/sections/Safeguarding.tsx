@@ -1,6 +1,6 @@
 import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
+import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
 /**
  * 尊厳とセーフガーディング（信頼の担保）。
@@ -21,16 +21,15 @@ export function Safeguarding({
           lead={safeguarding.lead}
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {safeguarding.items.map((item, i) => (
-            <Reveal
+        <Stagger className="mt-16 grid gap-6 md:grid-cols-3">
+          {safeguarding.items.map((item) => (
+            <StaggerItem
               key={item.title}
-              delay={i * 0.1}
-              className="rounded-2xl border border-hairline bg-white p-8"
+              className="group rounded-2xl border border-hairline bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10"
             >
               <span
                 aria-hidden
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 text-gold"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/50 text-gold transition-transform duration-300 group-hover:scale-110"
               >
                 {/* 盾のアイコン（信頼の担保） */}
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -40,9 +39,9 @@ export function Safeguarding({
               </span>
               <h3 className="mt-5 text-lg font-semibold text-navy">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.body}</p>
-            </Reveal>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

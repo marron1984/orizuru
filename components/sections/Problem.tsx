@@ -1,7 +1,6 @@
 import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
-import { stagger } from "@/lib/motion";
+import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 
 /** 問題提起（三つの分断）。3カラム。 */
 export function Problem({ content: problem }: { content: Dictionary["problem"] }) {
@@ -14,12 +13,11 @@ export function Problem({ content: problem }: { content: Dictionary["problem"] }
           lead={problem.lead}
         />
 
-        <Reveal variants={stagger} className="mt-16 grid gap-6 md:grid-cols-3">
+        <Stagger className="mt-16 grid gap-6 md:grid-cols-3">
           {problem.items.map((item) => (
-            <Reveal
+            <StaggerItem
               key={item.no}
-              as="div"
-              className="group relative rounded-2xl border border-hairline bg-white p-8 transition-shadow hover:shadow-lg hover:shadow-navy/5"
+              className="group relative rounded-2xl border border-hairline bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy/10"
             >
               <span className="font-serif text-4xl font-semibold text-gold/70">
                 {item.no}
@@ -30,9 +28,9 @@ export function Problem({ content: problem }: { content: Dictionary["problem"] }
                 aria-hidden
                 className="mt-6 block h-px w-10 bg-gold/40 transition-all group-hover:w-16"
               />
-            </Reveal>
+            </StaggerItem>
           ))}
-        </Reveal>
+        </Stagger>
       </div>
     </section>
   );

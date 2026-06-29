@@ -4,7 +4,7 @@ import { Kicker } from "@/components/ui/Kicker";
 import { DonateButton } from "@/components/ui/DonateButton";
 import { SubscribeForm } from "@/components/ui/SubscribeForm";
 import { CraneField } from "@/components/ui/CraneField";
-import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
+import { ParallaxImage } from "@/components/ui/ParallaxImage";
 
 /**
  * CTA。寄付・お知らせ登録への誘導。
@@ -23,15 +23,9 @@ export function CallToAction({
       id="cta"
       className="relative overflow-hidden bg-navy py-24 sm:py-32"
     >
-      {/* 背景写真（ネイビースクリムで可読性を確保） */}
+      {/* 背景写真（パララックス＋ネイビースクリムで可読性を確保） */}
       <div aria-hidden className="absolute inset-0">
-        <ImageWithFallback
-          src={cta.image}
-          alt=""
-          fill
-          sizes="100vw"
-          className="h-full w-full"
-        />
+        <ParallaxImage src={cta.image} alt="" sizes="100vw" />
       </div>
       <div
         aria-hidden

@@ -25,10 +25,18 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
     target: ref,
     offset: ["start start", "end start"],
   });
-  // 控えめなパララックス（背景はゆっくり、コピーはわずかに上へ）
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  // ダイナミックなパララックス（背景は大きく流れ、ケンバーンズでズーム、コピーは上へ抜ける）
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "32%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.12, 1.28]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-28%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
+  // 登場アニメーション（強めの立ち上がり＋ブラー）
+  const rise = {
+    hidden: { opacity: 0, y: 48, filter: "blur(12px)" },
+    show: { opacity: 1, y: 0, filter: "blur(0px)" },
+  };
+  const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
     <section
@@ -40,7 +48,7 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
       <motion.div
         aria-hidden
         className="absolute inset-0"
-        style={reduce ? undefined : { y: bgY }}
+        style={reduce ? undefined : { y: bgY, scale: bgScale }}
       >
         {!imgFailed ? (
           <Image
@@ -75,27 +83,30 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
       >
         <div className="max-w-3xl">
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            initial={reduce ? false : "hidden"}
+            animate={reduce ? undefined : "show"}
+            variants={rise}
+            transition={{ duration: 0.8, ease }}
           >
             <Kicker tone="onDark">{hero.kicker}</Kicker>
           </motion.div>
 
           <motion.h1
             className="mt-6 text-balance font-serif text-4xl font-semibold leading-[1.18] text-paper sm:text-6xl lg:text-7xl"
-            initial={reduce ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            initial={reduce ? false : "hidden"}
+            animate={reduce ? undefined : "show"}
+            variants={rise}
+            transition={{ duration: 1.05, delay: 0.12, ease }}
           >
             {hero.title}
           </motion.h1>
 
           <motion.p
             className="mt-7 max-w-xl text-pretty text-base leading-relaxed text-paper/85 sm:text-lg"
-            initial={reduce ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            initial={reduce ? false : "hidden"}
+            animate={reduce ? undefined : "show"}
+            variants={rise}
+            transition={{ duration: 1, delay: 0.32, ease }}
           >
             {hero.subtitle}
           </motion.p>

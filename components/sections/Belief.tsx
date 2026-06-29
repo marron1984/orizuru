@@ -2,7 +2,8 @@ import type { Dictionary } from "@/content/dictionary";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Crane } from "@/components/ui/Crane";
-import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
+import { ParallaxImage } from "@/components/ui/ParallaxImage";
+import { slideLeft, slideRight, popIn } from "@/lib/motion";
 
 /** 私たちの信念（ケアは、善意の塊）。これまで→これからの対比。 */
 export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
@@ -26,8 +27,11 @@ export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
         />
 
         <div className="mt-16 grid items-stretch gap-6 md:grid-cols-[1fr_auto_1fr]">
-          {/* これまで */}
-          <Reveal className="rounded-2xl border border-white/10 bg-navy-700/40 p-8">
+          {/* これまで（左から） */}
+          <Reveal
+            variants={slideLeft}
+            className="rounded-2xl border border-white/10 bg-navy-700/40 p-8"
+          >
             <p className="text-xs uppercase tracking-kicker text-paper/50">
               {belief.before.label}
             </p>
@@ -39,17 +43,19 @@ export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
             </p>
           </Reveal>
 
-          {/* 反転を示す折り鶴 */}
+          {/* 反転を示す折り鶴（ポップイン＋緩やかな回転） */}
           <Reveal
-            delay={0.1}
+            variants={popIn}
+            delay={0.15}
             className="flex items-center justify-center text-gold"
           >
             <Crane className="h-12 w-12 rotate-90 md:rotate-0" title={belief.craneTitle} />
           </Reveal>
 
-          {/* これから */}
+          {/* これから（右から） */}
           <Reveal
-            delay={0.15}
+            variants={slideRight}
+            delay={0.1}
             className="rounded-2xl border border-gold/30 bg-gradient-to-br from-navy-700/60 to-navy-500/20 p-8"
           >
             <p className="text-xs uppercase tracking-kicker text-gold-light">
@@ -67,15 +73,11 @@ export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
         {/* ステートメント（写真の上にネイビースクリムを重ねて可読性を確保） */}
         <Reveal delay={0.1} className="mt-14">
           <div className="relative overflow-hidden rounded-3xl">
-            <div className="absolute inset-0">
-              <ImageWithFallback
-                src={belief.image}
-                alt={belief.imageAlt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 72rem"
-                className="h-full w-full"
-              />
-            </div>
+            <ParallaxImage
+              src={belief.image}
+              alt={belief.imageAlt}
+              sizes="(max-width: 1024px) 100vw, 72rem"
+            />
             <div
               aria-hidden
               className="absolute inset-0"
