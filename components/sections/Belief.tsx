@@ -8,28 +8,27 @@ import { slideLeft, slideRight, popIn } from "@/lib/motion";
 /** 私たちの信念（ケアは、善意の塊）。これまで→これからの対比。 */
 export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
   return (
-    <section id="belief" className="relative overflow-hidden bg-navy py-24 sm:py-32">
+    <section id="belief" className="relative overflow-hidden bg-white py-24 sm:py-32">
       <div className="section-shell relative">
         <SectionHeading
           kicker={belief.kicker}
           heading={belief.heading}
           lead={belief.lead}
-          tone="onDark"
         />
 
         <div className="mt-16 grid items-stretch gap-6 md:grid-cols-[1fr_auto_1fr]">
           {/* これまで（左から） */}
           <Reveal
             variants={slideLeft}
-            className="rounded-2xl border border-white/10 bg-navy-700/40 p-8"
+            className="rounded-2xl border border-hairline bg-paper-2 p-8"
           >
-            <p className="text-xs uppercase tracking-kicker text-paper/50">
+            <p className="text-xs uppercase tracking-kicker text-ink-muted">
               {belief.before.label}
             </p>
-            <h3 className="mt-4 text-xl font-semibold text-paper/90">
+            <h3 className="mt-4 text-xl font-semibold text-navy/80">
               {belief.before.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-paper/60">
+            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
               {belief.before.body}
             </p>
           </Reveal>
@@ -47,23 +46,23 @@ export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
           <Reveal
             variants={slideRight}
             delay={0.1}
-            className="rounded-2xl border border-gold/30 bg-gradient-to-br from-navy-700/60 to-navy-500/20 p-8"
+            className="rounded-2xl border border-gold/50 bg-gold/10 p-8"
           >
-            <p className="text-xs uppercase tracking-kicker text-gold-light">
+            <p className="text-xs uppercase tracking-kicker text-gold">
               {belief.after.label}
             </p>
-            <h3 className="mt-4 text-xl font-semibold text-paper">
+            <h3 className="mt-4 text-xl font-semibold text-navy">
               {belief.after.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-paper/80">
+            <p className="mt-3 text-sm leading-relaxed text-navy/70">
               {belief.after.body}
             </p>
           </Reveal>
         </div>
 
-        {/* ステートメント（写真の上にネイビースクリムを重ねて可読性を確保） */}
+        {/* ステートメント（明るい写真に紙白のスクリムを重ね、ネイビーの文字で読ませる） */}
         <Reveal delay={0.1} className="mt-14">
-          <div className="relative overflow-hidden rounded-3xl">
+          <div className="relative overflow-hidden rounded-3xl border border-hairline">
             <ParallaxImage
               src={belief.image}
               alt={belief.imageAlt}
@@ -74,10 +73,10 @@ export function Belief({ content: belief }: { content: Dictionary["belief"] }) {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(26,33,56,0.55) 0%, rgba(26,33,56,0.78) 100%)",
+                  "linear-gradient(180deg, rgba(247,244,236,0.82) 0%, rgba(247,244,236,0.9) 100%)",
               }}
             />
-            <p className="relative mx-auto max-w-3xl px-6 py-20 text-balance text-center font-serif text-xl leading-relaxed text-paper sm:px-10 sm:py-24 sm:text-2xl">
+            <p className="relative mx-auto max-w-3xl px-6 py-20 text-balance text-center font-serif text-xl leading-relaxed text-navy sm:px-10 sm:py-24 sm:text-2xl">
               {belief.statement}
             </p>
           </div>

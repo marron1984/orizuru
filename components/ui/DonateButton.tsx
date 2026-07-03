@@ -18,7 +18,7 @@ export function DonateButton({
 }) {
   const externalUrl = process.env.NEXT_PUBLIC_DONATE_URL;
   const baseClass =
-    "inline-flex items-center justify-center gap-2 rounded-none bg-gold px-9 py-4 text-sm font-medium tracking-wide text-navy transition-colors hover:bg-gold-light focus-visible:ring-offset-navy";
+    "inline-flex items-center justify-center gap-2 rounded-none bg-gold px-9 py-4 text-sm font-medium tracking-wide text-navy transition-colors hover:bg-gold-light";
 
   if (externalUrl) {
     return (

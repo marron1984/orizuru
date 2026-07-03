@@ -58,7 +58,7 @@ export function SubscribeForm({ content: cta }: { content: Dictionary["cta"] }) 
             role="status"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="rounded-xl border border-gold/40 bg-gold/10 px-5 py-4 text-sm text-paper"
+            className="rounded-xl border border-gold/40 bg-gold/10 px-5 py-4 text-sm text-navy"
           >
             {message}
           </motion.p>
@@ -88,18 +88,18 @@ export function SubscribeForm({ content: cta }: { content: Dictionary["cta"] }) 
                 placeholder={cta.emailPlaceholder}
                 aria-invalid={status === "error"}
                 aria-describedby={status === "error" ? "subscribe-error" : undefined}
-                className="w-full flex-1 rounded-none border border-paper/20 bg-navy-700/60 px-5 py-3.5 text-sm text-paper placeholder:text-paper/40 focus-visible:ring-offset-navy"
+                className="w-full flex-1 rounded-none border border-hairline bg-white px-5 py-3.5 text-sm text-navy placeholder:text-ink-muted/60"
               />
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex shrink-0 items-center justify-center rounded-none border border-paper/30 px-7 py-3.5 text-sm font-medium tracking-wide text-paper transition-colors hover:border-gold hover:bg-gold hover:text-navy disabled:opacity-60 focus-visible:ring-offset-navy"
+                className="inline-flex shrink-0 items-center justify-center rounded-none border border-navy/30 px-7 py-3.5 text-sm font-medium tracking-wide text-navy transition-colors hover:border-gold hover:bg-gold disabled:opacity-60"
               >
                 {status === "submitting" ? cta.subscribeSubmitting : cta.subscribeLabel}
               </button>
             </div>
             {status === "error" ? (
-              <p id="subscribe-error" role="alert" className="text-sm text-gold-light">
+              <p id="subscribe-error" role="alert" className="text-sm text-vermilion">
                 {message}
               </p>
             ) : null}

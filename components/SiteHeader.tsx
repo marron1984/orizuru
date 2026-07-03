@@ -29,7 +29,7 @@ export function SiteHeader({
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-navy/80 backdrop-blur-md"
+          ? "border-b border-hairline bg-paper/85 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -39,7 +39,7 @@ export function SiteHeader({
       >
         <a
           href="#main"
-          className="font-serif text-lg font-semibold tracking-wide text-paper"
+          className="font-serif text-lg font-semibold tracking-wide text-navy"
         >
           {siteName}
         </a>
@@ -48,7 +48,7 @@ export function SiteHeader({
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-paper/75 transition-colors hover:text-gold-light"
+              className="text-sm text-navy/70 transition-colors hover:text-gold"
             >
               {link.label}
             </a>
@@ -60,14 +60,14 @@ export function SiteHeader({
             href={nav.switch.href}
             hrefLang={nav.switch.href === "/en" ? "en" : "ja"}
             aria-label={nav.switch.ariaLabel}
-            className="text-sm text-paper/70 transition-colors hover:text-gold-light"
+            className="text-sm text-navy/60 transition-colors hover:text-gold"
           >
             {nav.switch.label}
           </Link>
-          <span aria-hidden className="h-4 w-px bg-white/20" />
+          <span aria-hidden className="h-4 w-px bg-navy/15" />
           <a
             href="#cta"
-            className="rounded-none border border-gold/60 px-5 py-2 text-sm font-medium tracking-wide text-gold-light transition-colors hover:bg-gold hover:text-navy"
+            className="rounded-none border border-gold px-5 py-2 text-sm font-medium tracking-wide text-navy transition-colors hover:bg-gold"
           >
             {nav.cta}
           </a>

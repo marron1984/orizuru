@@ -21,9 +21,9 @@ export function CallToAction({
   return (
     <section
       id="cta"
-      className="relative overflow-hidden bg-navy py-24 sm:py-32"
+      className="relative overflow-hidden bg-paper-2 py-24 sm:py-32"
     >
-      {/* 背景写真（パララックス＋ネイビースクリムで可読性を確保） */}
+      {/* 背景写真（パララックス＋紙白のスクリムで明るく保つ） */}
       <div aria-hidden className="absolute inset-0">
         <ParallaxImage src={cta.image} alt="" sizes="100vw" />
       </div>
@@ -32,19 +32,17 @@ export function CallToAction({
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(26,33,56,0.82) 0%, rgba(26,33,56,0.92) 100%)",
+            "linear-gradient(180deg, rgba(247,244,236,0.88) 0%, rgba(247,244,236,0.94) 100%)",
         }}
       />
-      <CraneField className="opacity-60" />
+      <CraneField className="opacity-50" />
       <div className="section-shell relative">
         <Reveal className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <Kicker tone="onDark" className="justify-center">
-            {cta.kicker}
-          </Kicker>
-          <h2 className="mt-6 text-balance font-serif text-3xl font-semibold leading-tight text-paper sm:text-4xl lg:text-5xl">
+          <Kicker className="justify-center">{cta.kicker}</Kicker>
+          <h2 className="mt-6 text-balance font-serif text-3xl font-medium leading-tight tracking-tight text-navy sm:text-4xl lg:text-5xl">
             {cta.heading}
           </h2>
-          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-paper/80 sm:text-lg">
+          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-navy/70 sm:text-lg">
             {cta.body}
           </p>
 
@@ -55,12 +53,12 @@ export function CallToAction({
 
         {/* お知らせ登録（メイン導線） */}
         <Reveal delay={0.1} className="mx-auto mt-16 max-w-2xl">
-          <div className="rounded-3xl border border-white/10 bg-navy-700/40 p-8 sm:p-10">
+          <div className="rounded-3xl border border-hairline bg-white/85 p-8 backdrop-blur-sm sm:p-10">
             <div className="flex flex-col items-center text-center">
-              <h3 className="text-xl font-semibold text-paper">
+              <h3 className="text-xl font-semibold text-navy">
                 {cta.subscribeHeading}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-paper/70">
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                 {cta.subscribeBody}
               </p>
               <div className="mt-6 flex w-full justify-center">

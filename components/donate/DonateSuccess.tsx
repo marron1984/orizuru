@@ -17,18 +17,18 @@ export function DonateSuccess({
   const home = lang === "en" ? "/en" : "/";
 
   return (
-    <div className="flex min-h-[100svh] items-center justify-center bg-navy px-6 py-20">
+    <div className="flex min-h-[100svh] items-center justify-center bg-paper px-6 py-20">
       <div className="w-full max-w-lg text-center">
         <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold/15 text-gold">
           <Crane className="h-9 w-9" />
         </span>
-        <p className="mt-8 text-xs font-medium uppercase tracking-kicker text-gold-light">
+        <p className="mt-8 text-xs font-medium uppercase tracking-kicker text-gold">
           {s.kicker}
         </p>
-        <h1 className="mt-4 text-balance font-serif text-3xl font-semibold leading-tight text-paper sm:text-4xl">
+        <h1 className="mt-4 text-balance font-serif text-3xl font-semibold leading-tight tracking-tight text-navy sm:text-4xl">
           {s.heading}
         </h1>
-        <p className="mt-5 text-pretty leading-relaxed text-paper/80">{s.body}</p>
+        <p className="mt-5 text-pretty leading-relaxed text-ink-muted">{s.body}</p>
         <Link
           href={home}
           className="mt-10 inline-flex items-center justify-center rounded-none bg-gold px-8 py-3.5 text-sm font-medium tracking-wide text-navy transition-colors hover:bg-gold-light"

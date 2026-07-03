@@ -14,17 +14,16 @@ export function Destinations({
   return (
     <section
       id="destinations"
-      className="relative overflow-hidden bg-navy py-24 sm:py-32"
+      className="relative overflow-hidden bg-white py-24 sm:py-32"
     >
       <div className="section-shell relative">
         <SectionHeading
           kicker={destinations.kicker}
           heading={destinations.heading}
           lead={destinations.lead}
-          tone="onDark"
         />
 
-        <Reveal className="mt-12 overflow-hidden rounded-3xl border border-white/10">
+        <Reveal className="mt-12 overflow-hidden rounded-3xl border border-hairline">
           <div className="relative aspect-[21/9] w-full">
             <ParallaxImage
               src={destinations.image}
@@ -38,13 +37,13 @@ export function Destinations({
           {destinations.items.map((item) => (
             <StaggerItem
               key={item.title}
-              className="group border border-white/10 bg-navy-700/40 p-8 transition-colors duration-300 hover:border-gold/40 hover:bg-navy-700/60"
+              className="group border border-hairline bg-paper p-8 transition-colors duration-300 hover:border-gold/50"
             >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-navy-500/40 text-gold-light transition-all duration-300 group-hover:scale-110 group-hover:text-gold">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-gold transition-transform duration-300 group-hover:scale-110">
                 <Crane className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 text-xl font-semibold text-paper">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-paper/70">{item.body}</p>
+              <h3 className="mt-5 text-xl font-semibold text-navy">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.body}</p>
             </StaggerItem>
           ))}
         </Stagger>

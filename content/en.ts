@@ -17,7 +17,7 @@ export const en: Dictionary = {
       title: "ORIZURU ── A thousand cranes can change the world.",
       description:
         "Each person who receives care folds a single crane; together they become a thousand, carried to those the world supports. A circular donation project born from the care and welfare front lines.",
-      ogImageAlt: "Rainbow paper cranes rising through a deep navy space",
+      ogImageAlt: "Rainbow paper cranes rising through a light-filled hall",
     },
   },
 

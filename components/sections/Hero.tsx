@@ -42,7 +42,7 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
     <section
       ref={ref}
       aria-label={hero.regionLabel}
-      className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy"
+      className="relative flex min-h-[100svh] items-center overflow-hidden bg-paper-2"
     >
       {/* 背景画像（ネイビーフォールバック付き） */}
       <motion.div
@@ -63,13 +63,13 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
         ) : null}
       </motion.div>
 
-      {/* ネイビースクリム（左／下を暗くして文字可読性を確保。放射状ではなく直線で） */}
+      {/* 紙白のスクリム（左を明るく立てて文字可読性を確保。写真の明るさを活かす） */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(26,33,56,0.88) 0%, rgba(26,33,56,0.5) 42%, rgba(26,33,56,0.18) 100%), linear-gradient(180deg, rgba(26,33,56,0.35) 0%, transparent 40%, rgba(26,33,56,0.8) 100%)",
+            "linear-gradient(90deg, rgba(247,244,236,0.94) 0%, rgba(247,244,236,0.62) 44%, rgba(247,244,236,0.08) 100%), linear-gradient(180deg, rgba(247,244,236,0.25) 0%, transparent 40%, rgba(247,244,236,0.85) 100%)",
         }}
       />
 
@@ -88,11 +88,11 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
             variants={rise}
             transition={{ duration: 0.8, ease }}
           >
-            <Kicker tone="onDark">{hero.kicker}</Kicker>
+            <Kicker>{hero.kicker}</Kicker>
           </motion.div>
 
           <motion.h1
-            className="mt-6 text-balance font-serif text-4xl font-semibold leading-[1.18] text-paper sm:text-6xl lg:text-7xl"
+            className="mt-6 text-balance font-serif text-4xl font-medium leading-[1.18] tracking-tight text-navy sm:text-6xl lg:text-7xl"
             initial={reduce ? false : "hidden"}
             animate={reduce ? undefined : "show"}
             variants={rise}
@@ -102,7 +102,7 @@ export function Hero({ content: hero }: { content: Dictionary["hero"] }) {
           </motion.h1>
 
           <motion.p
-            className="mt-7 max-w-xl text-pretty text-base leading-relaxed text-paper/85 sm:text-lg"
+            className="mt-7 max-w-xl text-pretty text-base leading-relaxed text-navy/75 sm:text-lg"
             initial={reduce ? false : "hidden"}
             animate={reduce ? undefined : "show"}
             variants={rise}

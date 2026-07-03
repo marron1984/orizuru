@@ -185,7 +185,7 @@ export function CycleModel({ content: cycle }: { content: Dictionary["cycle"] })
             ))}
 
             <Reveal delay={0.24}>
-              <p className="rounded-xl bg-navy px-6 py-5 text-center font-serif text-base leading-relaxed text-paper">
+              <p className="rounded-xl border border-gold/40 bg-gold/10 px-6 py-5 text-center font-serif text-base leading-relaxed text-navy">
                 {cycle.note}
               </p>
             </Reveal>
